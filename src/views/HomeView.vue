@@ -76,9 +76,7 @@ import AppFooter from '../components/AppFooter.vue';
   font-size: 1.2rem;
 }
 
-.darker-bg {
-  background-color: #2a2826;
-}
+
 
 h2 {
   margin-top: 15px;
