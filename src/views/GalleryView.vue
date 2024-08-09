@@ -1,7 +1,7 @@
 <template>
 
-   <div class="container">
-         <div class="row gap-4">
+   <div class="">
+         <div class="d-flex justify-content-center flex-wrap gap-3">
             <div v-for="item in 15" class="p-3 col-3 border border-dark rounded-3 darker-bg">
                <img src="../assets/img/kandallo/79844871_2455984214662996_6265950529986232320_n.jpg" alt=""
                   class="w-100">
