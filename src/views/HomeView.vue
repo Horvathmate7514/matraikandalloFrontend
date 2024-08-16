@@ -1,5 +1,4 @@
 <script setup>
-import AppFooter from '../components/AppFooter.vue';
 </script>
 
 <template>
@@ -62,7 +61,6 @@ import AppFooter from '../components/AppFooter.vue';
       </div>
     </div>
   </div>
-  <AppFooter />
 
 </template>
 

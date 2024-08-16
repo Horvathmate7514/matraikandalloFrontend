@@ -123,7 +123,7 @@ const { width } = useWindowSize()
 }
 
 .logoimg {
-    width: 100px;
+    width: 200px;
 }
 
 .navbar-background {
