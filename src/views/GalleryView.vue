@@ -5,9 +5,9 @@
          <!-- <div class="p-3 col-3 d-flex align-items-center border border-dark rounded-3 darker-bg">
             <img src="../assets/img/T.K1.jpg" alt="" class="w-100">
          </div> -->
-         <div v-for="(item, key) in gallery" class="p-3 col-3 border border-dark rounded-3 darker-bg" @click="modalImage(key)"
+         <div v-for="(item, key) in gallery" class="p-3 col-3 border border-dark rounded-3 darker-bg d-flex align-items-center" @click="modalImage(key)"
             data-bs-toggle="modal" data-bs-target="#photoGaleryModal">
-            <img :src="item" alt="" class="w-100">
+            <img :src="item" alt="" class="w-100 ">
          </div>
       </div>
    </div>
