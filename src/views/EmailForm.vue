@@ -30,8 +30,6 @@
 </template>
 
 <style scoped>
-
-
 .container {
     margin-top: 150px;
     width: 100%;
