@@ -28,7 +28,7 @@ for (const path in modules) {
 
 const modalImage = (id) => {
    selectedImageIndex.value = id;
-   console.log(selectedImageIndex.value);
+
    
 }
 
