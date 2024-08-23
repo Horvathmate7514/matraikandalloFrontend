@@ -23,9 +23,6 @@
 import { ref } from 'vue';
 const props = defineProps(["imageId", "gallery"]);
 
-
-
-
 let tempimage = ref() 
 
 let imgid = ref(tempimage);
