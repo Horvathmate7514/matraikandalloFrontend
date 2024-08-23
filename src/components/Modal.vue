@@ -23,7 +23,7 @@
 import { ref } from 'vue';
 
 const props = defineProps(["imageId", "gallery"]);
-let imgid = ref(0);
+let imgid = ref(props.imageId);
 
 const pageup = () =>{
     imgid.value += 1;
