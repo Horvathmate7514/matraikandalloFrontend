@@ -19,7 +19,7 @@
 import { ref } from 'vue';
 import Modal from '../components/Modal.vue';
 const selectedImageIndex = ref('');
-const modules = import.meta.glob('@/assets/img/**/*')
+const modules = import.meta.glob('@/assets/img/kandallo/**')
 const gallery = []
 for (const path in modules) {
    const p = new URL(path, import.meta.url).href;

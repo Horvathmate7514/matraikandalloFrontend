@@ -22,7 +22,7 @@
                 <a class="link" href="https://www.instagram.com/matraikandallo/" target="_blank">Instagram</a>
             </li>
             <li>
-                <a class="link" href="mailto:Matraikandallo@gmail.com">Email</a>
+                <router-link to="/email" class="link">Rendelés</router-link>
             </li>
             <li>
                 <a class="link" href="tel:+36309647351">+36309647351</a>
@@ -80,6 +80,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                     <li class="nav-item">
                         <router-link to="/" class="link nav-link" >Nyitólap</router-link>
                     </li>
