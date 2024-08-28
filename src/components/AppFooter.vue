@@ -1,5 +1,5 @@
 <template>
-    <footer class="container-fluid mt-5 text-center text-lg-start">
+    <footer class="container-fluid  mt-5 text-center text-lg-start">
       <div class="container d-flex justify-content-center py-5">
         <a type="button" class="btn btn-primary btn-lg btn-floating mx-2 footer-btn" href="https://www.facebook.com/Matraikandallo" target="_blank">
           <i class="fab fa-facebook-f"></i>

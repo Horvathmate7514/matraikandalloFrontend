@@ -5,7 +5,8 @@
          <!-- <div class="p-3 col-3 d-flex align-items-center border border-dark rounded-3 darker-bg">
             <img src="../assets/img/T.K1.jpg" alt="" class="w-100">
          </div> -->
-         <div v-for="(item, key) in gallery" class="p-3 col-3 border border-dark rounded-3 darker-bg d-flex align-items-center" @click="modalImage(key)"
+         <div v-if="gallery != ''" v-for="(item, key) in gallery"
+            class="p-3 col-3 border border-dark rounded-3 darker-bg d-flex align-items-center" @click="modalImage(key)"
             data-bs-toggle="modal" data-bs-target="#photoGaleryModal">
             <img :src="item" alt="" class="w-100 ">
          </div>
@@ -16,20 +17,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Modal from '../components/Modal.vue';
-const selectedImageIndex = ref('');
-const modules = import.meta.glob('@/assets/img/kandallo/**')
-const gallery = []
-for (const path in modules) {
-   const p = new URL(path, import.meta.url).href;
-   gallery.push(p);
-}
+import dataservice from '../services/dataservice';
+const selectedImageIndex = ref();
+const gallery = ref()
+
+dataservice.getAllImages().then(data => {
+
+   gallery.value = data.data
+   
+})
 
 const modalImage = (id) => {
    selectedImageIndex.value = id;
 
-   
 }
 
 </script>
