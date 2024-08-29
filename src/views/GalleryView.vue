@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import Modal from '../components/Modal.vue';
 import dataservice from '../services/dataservice';
 const selectedImageIndex = ref();

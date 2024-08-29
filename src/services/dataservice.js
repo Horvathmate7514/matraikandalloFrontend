@@ -11,5 +11,20 @@ export default {
             .catch(err =>{
                 return Promise.reject(err);
             })
+    
+    
+        },
+    
+    postSendEmail(data){
+        return Axios.post('/send', data)
+        .then(resp => {
+            return resp.data;
+        })
+        .catch(err =>{
+            console.log(err);
+            
+            return Promise.reject(err)
+        })
     }
+    
 }
