@@ -19,8 +19,6 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                             placeholder="Mit szeretne, telefonszám, egyéb elérhetőség"></textarea>
                     </div>
-
-
                 </div>
 
                 <div class="form-submit-btn">

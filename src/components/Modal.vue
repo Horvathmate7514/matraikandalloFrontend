@@ -20,8 +20,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 const props = defineProps(["imageId", "gallery"]);
+
 
 let tempimage = ref() 
 
@@ -35,6 +36,8 @@ const pageup = () =>{
     imgid.value +=  1;
     
 }
+
+
 
 </script>
 
