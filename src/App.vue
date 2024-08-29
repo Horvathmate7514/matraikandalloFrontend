@@ -11,7 +11,8 @@ import AppFooter from "./components/AppFooter.vue";
   
 
   <router-view />
-  <AppFooter class="fixed-buttom"/>
+ 
+    <AppFooter />
 </template>
 
 <style scoped></style>

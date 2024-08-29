@@ -57,7 +57,7 @@
                             target="_blank">Facebook</a></li>
                     <li><a class="dropdown-item" href="https://www.instagram.com/matraikandallo/"
                             target="_blank">Instagram</a></li>
-                    <li><a class="dropdown-item" href="mailto:Matraikandallo@gmail.com">Email</a></li>
+                    <li><router-link to="/email" class="dropdown-item" >Rendelés</router-link></li>
                     <li><a class="dropdown-item" href="tel:+36309647351">+36309647351</a></li>
                 </ul>
             </li>
@@ -97,7 +97,7 @@
                                     target="_blank">Facebook</a></li>
                             <li><a class="dropdown-item" href="https://www.instagram.com/matraikandallo/"
                                     target="_blank">Instagram</a></li>
-                            <li><a class="dropdown-item" href="mailto:Matraikandallo@gmail.com">Email</a></li>
+                                    <li><router-link to="/email" class="dropdown-item" >Rendelés</router-link></li>
                             <li><a class="dropdown-item" href="tel:+36309647351">+36309647351</a></li>
                         </ul>
                     </li>
