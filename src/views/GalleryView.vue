@@ -6,9 +6,9 @@
             <img src="../assets/img/T.K1.jpg" alt="" class="w-100">
          </div> -->
          <div v-if="gallery != ''" v-for="(item, key) in gallery"
-            class="p-3 col-3 border border-dark rounded-3 darker-bg d-flex align-items-center " @click="modalImage(key)"> 
+            class="p-3 col-sm-3 col-md-2 border border-dark rounded-3 darker-bg d-flex align-items-center " @click="modalImage(key)"> 
             <!-- data-bs-toggle="modal" data-bs-target="#photoGaleryModal" -->
-            <img :src="item" alt="" class="w-100 imgs ">
+            <img :src="item" alt="" class="imgs ">
          </div>
       </div>
    </div>
@@ -41,9 +41,11 @@ const modalImage = (id) => {
 
 <style scoped>
 .imgs{
-   width: 100%; 
-  height: 800px; 
-  object-fit: cover; 
-  border-radius: 8px;
+   height: 100%;
+   width: 100%;
+   max-width: ;
+   max-height: 100vh;
+   
+   object-fit: cover; 
 }
 </style>
