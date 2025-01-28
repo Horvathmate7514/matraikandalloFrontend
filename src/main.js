@@ -10,4 +10,8 @@ const app = createApp(App);
 
 app.use(router);
 
+document.addEventListener("contextmenu", function (e){
+    e.preventDefault();
+}, false);
+
 app.mount("#app");
