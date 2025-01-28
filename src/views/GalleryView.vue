@@ -43,7 +43,6 @@ const modalImage = (id) => {
 .imgs{
    height: 100%;
    width: 100%;
-   max-width: ;
    max-height: 100vh;
    
    object-fit: cover; 
