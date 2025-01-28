@@ -30,7 +30,10 @@
 <style scoped>
 footer{
   background-color: rgba(0, 0, 0, 0.2);
+  display: block;
+    unicode-bidi: isolate;
 }
+
 
 .footer-btn{
   background-color: #0000 !important;

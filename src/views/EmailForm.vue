@@ -1,33 +1,75 @@
 <template>
-
+    <div class="fullsize">
         <div class="container mx-auto">
             <h1 class="form-title">Személyes egyeztetés</h1>
-            <form action="#">
+            <form action="#" >
                 <div class="main-user-info">
                     <div class="user-input-box">
                         <label for="fullName">Név</label>
-                        <input type="text"  name="fullName" placeholder="Írja be a teljes nevét" />
+                        <input v-model="rawData.name"  type="text" name="fullName" placeholder="Írja be a teljes nevét"  />
                     </div>
-                    
+
                     <div class="user-input-box">
-                        <label for="username">Email címe</label>
-                        <input type="text"  name="username" placeholder="Írja be az ön Email címét" />
+                        <label for="email">Email címe</label>
+                        <input  v-model="rawData.email" type="text" name="email" placeholder="Írja be az ön Email címét" />
                     </div>
 
                     <div class="user-input-box">
                         <label for="exampleFormControlTextarea1" class="form-label">Email szövege</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Mit szeretne, telefonszám, egyéb elérhetőség"></textarea>
+                        <textarea  v-model="rawData.message" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Mit szeretne, telefonszám, egyéb elérhetőség"></textarea>
                     </div>
                 </div>
 
                 <div class="form-submit-btn">
-                    <input type="submit" value="Küldés">
+                    <input type="button" value="Küldés" @click="sendEmail()">
                 </div>
+
             </form>
         </div>
+    </div>
 </template>
 
+<script setup>
+import dataservice from '../services/dataservice';
+import { ref } from 'vue';
+
+
+const rawData = ref(
+    {
+    name:"",
+    email:"",
+    message:""
+
+
+}
+)
+
+
+
+
+
+const sendEmail = () => {
+
+    dataservice.postSendEmail(rawData.value).then(
+        
+        )
+        .catch()
+}
+
+
+
+</script>
+
+
+
+
 <style scoped>
+.fullsize {
+
+    min-height: 60vh;
+}
+
 .container {
     margin-top: 150px;
     width: 100%;
@@ -35,8 +77,9 @@
     background-color: #2a2826;
     padding: 28px;
     border-radius: 10px;
-    box-shadow: inset -2px 2px 2px ;
+    box-shadow: inset -2px 2px 2px;
     color: #edd088;
+
 
 }
 
@@ -124,7 +167,7 @@
 
 .form-submit-btn input:hover {
     background-color: #2a2826;
-   
+
 }
 
 @media(max-width: 600px) {
@@ -157,7 +200,7 @@
     }
 }
 
-#exampleFormControlTextarea1{
+#exampleFormControlTextarea1 {
     height: 150px;
 }
 </style>
