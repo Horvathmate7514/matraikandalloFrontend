@@ -8,7 +8,7 @@
          <div v-if="gallery != ''" v-for="(item, key) in gallery"
             class="p-3 col-sm-3 col-md-2 border border-dark rounded-3 darker-bg d-flex align-items-center " @click="modalImage(key)"> 
             <!-- data-bs-toggle="modal" data-bs-target="#photoGaleryModal" -->
-            <img :src="item" alt="" class="imgs ">
+            <img :src="item" alt="" class="imgs selectDisable">
          </div>
       </div>
    </div>
@@ -46,5 +46,13 @@ const modalImage = (id) => {
    max-height: 100vh;
    
    object-fit: cover; 
+}
+
+.selectDisable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 </style>

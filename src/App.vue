@@ -7,16 +7,14 @@ import AppFooter from "./components/AppFooter.vue";
 
 <template>
 
-  <NavBar class="disabled"/>
+  <NavBar />
   
 
-  <router-view class="disabled"/>
+  <router-view />
  
-  <AppFooter class="disabled"/>
+  <AppFooter />
 </template>
 
 <style scoped>
-.disabled {
-    pointer-events: none;
-}
+
 </style>
