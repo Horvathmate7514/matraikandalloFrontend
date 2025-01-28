@@ -5,7 +5,6 @@ export default {
     getAllImages(){
         return Axios.get('/images')
             .then(resp => {
-              
                 return resp.data;
             })
             .catch(err =>{

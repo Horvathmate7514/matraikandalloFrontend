@@ -12,7 +12,7 @@
                     <button type="button"
                         class="bg-blur fa fa-chevron-left position-absolute top-50 start-0 m-2 p-3"></button>
 
-                        <img :src="gallery[imageId]" class="w-100">
+                        <img :src="imageId " class="w-100">
                 </div>
             </div>
         </div>
@@ -20,21 +20,20 @@
 </template>
 
 <script setup>
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
 const props = defineProps(["imageId", "gallery"]);
 
 
-let tempimage = ref() 
-
-let imgid = ref(tempimage);
-
-console.log(
-    imgid 
-);
+let imgid = ref(props.imageId? props.imageId : 0);
 
 const pageup = () =>{
-    imgid.value +=  1;
-    
+    if (imgid.value >=  props.gallery.length-1){
+        imageId =  0;
+    }
+    else{
+        imgid.value +=  1;
+    }
+   
 }
 
 
