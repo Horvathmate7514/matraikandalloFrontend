@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import GalleryView from "../views/GalleryView.vue";
 import EmailForm from "../views/EmailForm.vue";
 import LoginView from "../views/LoginView.vue";
+import Admin from "../views/AdminDashBoardView.vue";
 
 
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: "/admin/login",
       name: "login",
       component: LoginView,
+    },
+    {
+      path: "/admin/dashboard",
+      name: "admin",
+      component: Admin,
     },
   ],
 });
