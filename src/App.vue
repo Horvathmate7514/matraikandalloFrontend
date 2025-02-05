@@ -2,21 +2,17 @@
 import { RouterView } from "vue-router";
 import NavBar from "./components/NavBar.vue";
 import AppFooter from "./components/AppFooter.vue";
-var pathname = window.location.pathname.split("/").slice(1)[1]
+var pathname = window.location.pathname.split("/")
 
 </script>
 
 <template>
+  <NavBar v-if="!pathname.includes('admin')" />
 
-  <NavBar v-if="pathname!= 'admin' && pathname!= '/admin/login'"
-  />
-  
 
   <router-view />
- 
-  <AppFooter v-if="pathname!= 'admin' && pathname!= '/admin/login'"
-  />
+
+  <AppFooter v-if="!pathname.includes('admin')" />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
