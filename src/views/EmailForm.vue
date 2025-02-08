@@ -69,10 +69,10 @@
             isLoading.value = true;
             isSuccess.value = false; 
             try {
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Szimulált API hívás
+    await new Promise(resolve => setTimeout(resolve, 2000)); 
     isSuccess.value = true;
 
-    // 3 másodperc után elrejtjük az üzenetet
+   
     setTimeout(() => {
       isSuccess.value = false;
     }, 3000);
