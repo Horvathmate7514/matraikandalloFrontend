@@ -57,5 +57,9 @@ function submit() {
 <style scoped>
 .logingomb {
     background-color: #ecd089;
+    
 }
+
+.logingomb:hover{
+    background-color: #343331}
 </style>
