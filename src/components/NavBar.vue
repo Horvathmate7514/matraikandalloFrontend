@@ -87,7 +87,7 @@
                     <li>
                         <router-link class="link nav-link" to="/gallery" >Képgaléria</router-link>
                     </li>
-                    <li class="nav-item">
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Elérhetőségek
@@ -101,7 +101,7 @@
                             <li><a class="dropdown-item" href="tel:+36309647351">+36309647351</a></li>
                         </ul>
                     </li>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

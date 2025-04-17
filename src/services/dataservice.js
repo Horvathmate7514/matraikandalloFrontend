@@ -33,6 +33,31 @@ export default {
                 return Promise.reject(err)
             })
     },
+    upload(data, token) {
+        let formData = new FormData()
+        formData.append('image', data)
+        return Axios.post('/upload', formData, )
+            .then(resp => {
+                return resp.data;
+            })
+            .catch(err => {
+                console.log(err);
+
+                return Promise.reject(err)
+            })
+    },
+    deleteImg(data, token) {
+        return Axios.delete('/delete', { headers: { 'Authorization': `Bearer ${token}` }, data: data })
+        
+            .then(resp => {
+                return resp.data;
+            })
+            .catch(err => {
+                console.log(err);
+
+                return Promise.reject(err)
+            })
+    },
 
 
 

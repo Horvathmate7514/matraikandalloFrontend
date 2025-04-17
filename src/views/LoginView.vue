@@ -10,7 +10,7 @@
                     <input type="password" class="form-control" id="password" placeholder="Jelszó" v-model="password" />
                 </div>
                 <div class="input-box button mb-3">
-                    <input @click="submit" class="logingomb btn w-100" value="Bejelentkezés" />
+                    <input @click="submit" class="logingomb btn w-100 " type="button" value="Bejelentkezés" />
                 </div>
             </form>
         </div>
@@ -43,11 +43,16 @@ function submit() {
         password: password.value,
     }
 
-    dataservice.login(data).then(data => {
-        store.setUser(data)
-        store.setLoggedIn(true)
-        router.push({ name: "admin" })
-    })
+    try {
+        dataservice.login(data).then(data => {
+            store.setUser(data)
+            store.setLoggedIn(true)
+            router.push({ name: "admin" })
+        })
+        
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
@@ -57,6 +62,7 @@ function submit() {
 <style scoped>
 .logingomb {
     background-color: #ecd089;
+    
     
 }
 

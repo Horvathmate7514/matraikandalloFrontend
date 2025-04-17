@@ -50,7 +50,7 @@ function checkRights() {
 
     console.log(user.user.role)
 
-    if (user.user.role === 1) {
+    if (user.user.role == 1) {
       nextTick();
 
     } else {
