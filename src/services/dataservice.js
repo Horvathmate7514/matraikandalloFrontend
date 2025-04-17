@@ -36,7 +36,7 @@ export default {
     upload(data, token) {
         let formData = new FormData()
         formData.append('image', data)
-        return Axios.post('/upload', formData, )
+        return Axios.post('/upload', formData,  { headers: { 'Authorization': `Bearer ${token}` } })
             .then(resp => {
                 return resp.data;
             })
