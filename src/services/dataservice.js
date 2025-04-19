@@ -2,8 +2,9 @@ import Axios from 'axios';
 Axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
 
 export default {
-    getAllImages() {
-        return Axios.get('/images')
+    getAllImages(type = "") {
+        console.log(type)
+        return Axios.get(`/images?type=${type}`)
             .then(resp => {
                 return resp.data;
             })
