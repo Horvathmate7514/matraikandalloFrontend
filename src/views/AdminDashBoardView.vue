@@ -59,6 +59,8 @@ const openFileMenu = () => {
 }
 
 const uploadImage = (e) => {
+console.log(token);
+
   let file = e.target.files[0]
   dataservice.upload(file, token).then(data => {
     dataservice.getAllImages().then(data => {

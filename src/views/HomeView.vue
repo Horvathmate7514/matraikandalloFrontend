@@ -19,7 +19,7 @@
           </div>
           <div class="carousel-caption shadow rounded-3">
             <h5>Az ön igényeire szabva</h5>
-            <p>Kemence, grillező, bográcsozó és vaslapos platni.</p>
+            <p>Kandalló, Kemence, grillező, bográcsozó és vaslapos platni.</p>
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

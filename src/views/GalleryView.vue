@@ -13,7 +13,7 @@
        <div class="lightbox-content">
          <span class="close" @click="closeLightbox">&times;</span>
          <button class="prev" @click="prevImage">&#10094;</button>
-         <img :src="gallery[selectedImageIndex]" class="lightbox-image">
+         <img :src="gallery[selectedImageIndex]" class="lightbox-image selectDisable">
          <button class="next" @click="nextImage">&#10095;</button>
        </div>
      </div>
@@ -21,35 +21,55 @@
  </template>
  
  <script setup>
- import { ref, onMounted } from 'vue';
- import dataservice from '../services/dataservice';
- 
- const gallery = ref([]);
- const selectedImageIndex = ref(0);
- const lightboxOpen = ref(false);
- 
- onMounted(() => {
-   dataservice.getAllImages().then(data => {
-     gallery.value = data.data;
-   });
- });
- 
- const openLightbox = (index) => {
-   selectedImageIndex.value = index;
-   lightboxOpen.value = true;
- };
- 
- const closeLightbox = () => {
-   lightboxOpen.value = false;
- };
- 
- const prevImage = () => {
-   selectedImageIndex.value = (selectedImageIndex.value - 1 + gallery.value.length) % gallery.value.length;
- };
- 
- const nextImage = () => {
-   selectedImageIndex.value = (selectedImageIndex.value + 1) % gallery.value.length;
- };
+ import { ref, onMounted, onBeforeUnmount } from 'vue';
+import dataservice from '../services/dataservice';
+
+const gallery = ref([]);
+const selectedImageIndex = ref(0);
+const lightboxOpen = ref(false);
+
+onMounted(() => {
+  dataservice.getAllImages().then(data => {
+    gallery.value = data.data;
+  });
+
+  // Nyílkezelés hozzáadása
+  window.addEventListener('keydown', handleKeydown);
+});
+
+onBeforeUnmount(() => {
+  // Esemény eltávolítása komponens elhagyásakor
+  window.removeEventListener('keydown', handleKeydown);
+});
+
+const openLightbox = (index) => {
+  selectedImageIndex.value = index;
+  lightboxOpen.value = true;
+};
+
+const closeLightbox = () => {
+  lightboxOpen.value = false;
+};
+
+const prevImage = () => {
+  selectedImageIndex.value = (selectedImageIndex.value - 1 + gallery.value.length) % gallery.value.length;
+};
+
+const nextImage = () => {
+  selectedImageIndex.value = (selectedImageIndex.value + 1) % gallery.value.length;
+};
+
+const handleKeydown = (e) => {
+  if (!lightboxOpen.value) return;
+
+  if (e.key === 'ArrowRight') {
+    nextImage();
+  } else if (e.key === 'ArrowLeft') {
+    prevImage();
+  } else if (e.key === 'Escape') {
+    closeLightbox();
+  }
+};
  </script>
  
  <style scoped>
