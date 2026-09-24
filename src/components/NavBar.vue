@@ -4,7 +4,7 @@
         v-if="width >= 1500">
         <div  class="branding">
             <router-link to="/" class="logo">
-                <img class="logoimg" src="/src/assets/img/logogold_wobg.png" alt="" />
+                <img class="logoimg" src="/src/assets/img/logogold_wobg.png" alt="Mátrai Kandalló logó" />
             </router-link>
         </div>
 
@@ -36,7 +36,7 @@
         v-if="width < 1500 && width > 645">
         <div class="branding">
             <router-link to="/" class="logo">
-                <img class="logoimg" src="/src/assets/img/logogold_wobg.png" alt="" />
+                <img class="logoimg" src="/src/assets/img/logogold_wobg.png" alt="Mátrai Kandalló logó" />
             </router-link>
         </div>
 
@@ -70,7 +70,7 @@
         <div class="container-fluid">
             <div class="branding">
                 <router-link to="/" class="logo">
-                    <img class="logoimg" src="/src/assets/img/logogold_wobg.png" alt="" />
+                    <img class="logoimg" src="/src/assets/img/logogold_wobg.png" alt="Mátrai Kandalló logó" />
                 </router-link>
             </div>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"

@@ -12,14 +12,14 @@ const { width, height } = useWindowSize()
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="/src/assets/img/kandallo.jpg" class="d-block w-50 mx-auto" alt="Slide 1">
+            <img src="/src/assets/img/kandallo.jpg" class="d-block w-50 mx-auto" alt="Téglaburkolatú kandalló beépített könyvespolccal – Mátrai Kandalló, Győr">
           </div>
           <div class="carousel-item">
-            <img src="/src/assets/img/T.K1.jpg" class="d-block w-75 mx-auto" alt="Slide 2">
+            <img src="/src/assets/img/T.K1.jpg" class="d-block w-75 mx-auto" alt="Modern, vakolt kandalló nappaliban – kandalló építés Győr környékén">
           </div>
           <div class="carousel-item">
             <div class="teglakalyha">
-              <img src="/src/assets/img/teglakalyha_2.jpeg" class="d-block w-50 mx-auto" alt="Slide 3">
+              <img src="/src/assets/img/teglakalyha_2.jpeg" class="d-block w-50 mx-auto" alt="Világos téglakályha sarokkandalló betéttel – Győr-Moson-Sopron megye">
             </div>
           </div>
           <div class="carousel-caption shadow rounded-3" v-if="width >= 900">
@@ -43,7 +43,8 @@ const { width, height } = useWindowSize()
     </div>
     <div class="col-sm-12 col-lg-6 d-flex align-items-center p-5">
       <div class="darker-bg shadow rounded-4 text-size p-5">
-        <h4>Üdvözlöm a Mátrai kandalló oldalán!</h4>
+        <h1 class="h4">Mátrai Kandalló – kandalló, kályha és kemence építés Győrben</h1>
+        <p class="h5 fw-normal">Üdvözlöm a Mátrai kandalló oldalán!</p>
         <p class="bemutatkozoszoveg">
           A Mátrai név ismerősen csenghet a cserépkályhás szakmából. Családom útja
           1957-ben kezdődött és a 3 generáció alatt megszerzett tudás tovább száll. Felmenőim kályhái sokak otthonának
@@ -68,6 +69,17 @@ const { width, height } = useWindowSize()
       </div>
     </div>
   </div>
+  <section class="megrendelesborder p-2 darker-bg container mt-4">
+    <div class="noblur">
+      <h2 class="text-center"><b>Kandalló, kályha és kemence Győrben és Győr-Moson-Sopron megyében</b></h2>
+      <div class="text-center">
+        <p class="megrendeles">Győrben és Győr-Moson-Sopron megye településein vállaljuk egyedi kandallók,
+          cserépkályhák, téglakályhák és kemencék tervezését és építését. Beltéri kandalló, kerti kemence, grillező,
+          bográcsozó és vaslapos platni – mindegyik az Ön otthonára és igényeire szabva, a Mátrai család 1957 óta
+          öröklődő szaktudásával.</p>
+      </div>
+    </div>
+  </section>
 
 </template>
 

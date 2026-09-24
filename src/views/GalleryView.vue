@@ -5,7 +5,7 @@
       <div v-if="kandello.length" v-for="(item, key) in kandello" :key="key"
         class="p-3 col-sm-3 col-md-2 border border-dark rounded-3 darker-bg d-flex align-items-center"
         @click="openLightbox(key, 0)">
-        <img :src="item" draggable="false" class="imgs selectDisable">
+        <img :src="item" :alt="`Kandalló referencia munka ${key + 1} – Mátrai Kandalló, Győr`" loading="lazy" draggable="false" class="imgs selectDisable">
       </div>
     </div>
     <h1 class="me-5 pointerSelect d-flex justify-content-center" @click="selectType(0)">Kemence</h1>
@@ -13,7 +13,7 @@
       <div v-if="Kemence.length" v-for="(item, key) in Kemence" :key="key"
         class="p-3 col-sm-3 col-md-2 border border-dark rounded-3 darker-bg d-flex align-items-center"
         @click="openLightbox(key, 1)">
-        <img :src="item" draggable="false" class="imgs selectDisable">
+        <img :src="item" :alt="`Kemence referencia munka ${key + 1} – Mátrai Kandalló, Győr`" loading="lazy" draggable="false" class="imgs selectDisable">
       </div>
     </div>
     <!-- Lightbox Modal -->
