@@ -1,11 +1,16 @@
 <script setup>
+import { useWindowSize } from '@vueuse/core'
+
+
+const { width, height } = useWindowSize()
+
 </script>
 
 <template>
   <div class="row col-12">
     <div class="col-sm-12 col-lg-6">
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner ">
+        <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/src/assets/img/kandallo.jpg" class="d-block w-50 mx-auto" alt="Slide 1">
           </div>
@@ -17,22 +22,24 @@
               <img src="/src/assets/img/teglakalyha_2.jpeg" class="d-block w-50 mx-auto" alt="Slide 3">
             </div>
           </div>
-          <div class="carousel-caption shadow rounded-3">
+          <div class="carousel-caption shadow rounded-3" v-if="width >= 900">
             <h5>Az ön igényeire szabva</h5>
             <p>Kandalló, Kemence, grillező, bográcsozó és vaslapos platni.</p>
           </div>
         </div>
+
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="prev">
-          <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span> -->
-        </button>
+          data-bs-slide="prev"></button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-          data-bs-slide="next">
-          <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span> -->
-        </button>
+          data-bs-slide="next"></button>
       </div>
+
+      <!-- Felirat külön, a carousel után -->
+      <div class="carousel-caption-custom shadow rounded-3" v-if="width <= 768">
+        <h5>Az ön igényeire szabva</h5>
+        <p>Kandalló, Kemence, grillező, bográcsozó és vaslapos platni.</p>
+      </div>
+
     </div>
     <div class="col-sm-12 col-lg-6 d-flex align-items-center p-5">
       <div class="darker-bg shadow rounded-4 text-size p-5">
@@ -57,7 +64,7 @@
           vagy telefonon. Egyeztetés után egy helyszíni terepfelmérés következik, ami Győr és 15 km-es körzetében
           díjmentes, messzebb 10000 Ft, ami üzlet kötés esetében levonódik a teljes összegből. Ezután egyedi terv és
           árajánlat készül minden ügyfélnek a megbeszéltek alapján, forintra kiszámolva.</p>
-  
+
       </div>
     </div>
   </div>
@@ -69,6 +76,55 @@
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(2px);
 }
+
+.carousel-caption-custom {
+  position: absolute;
+  bottom: 20%;
+  /* ne a legalsó sarokban legyen */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 80%;
+  text-align: center;
+}
+
+@media (min-height: 70vh) {
+
+  .carousel-item img {
+    object-fit: contain;
+    max-height: 100%;
+    min-height: 70vh;
+  }
+}
+
+/* Mobilon kerüljön a kép ALÁ fixen */
+@media (max-width: 768px) {
+  .carousel-caption-custom {
+    position: static;
+    /* ne legyen overlay */
+    transform: none;
+    margin-top: 10px;
+    background-color: transparent;
+    backdrop-filter: none;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .carousel-item img {
+    object-fit: contain;
+    max-height: 100%;
+    min-height: 0vh;
+
+  }
+}
+
+
+
+
+
 
 .text-size {
   font-size: 1.2rem;
@@ -85,11 +141,6 @@ h2 {
   font-size: 1.6rem;
 }
 
-.carousel-item img {
-  object-fit: contain;
-  max-height: 100%;
-  min-height: 90vh;
-}
 
 
 .teglakalyha {

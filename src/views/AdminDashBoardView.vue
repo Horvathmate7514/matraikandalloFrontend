@@ -1,6 +1,5 @@
 <template>
   <div class="admin-container">
-    <!-- Header Section -->
     <div class="admin-header">
       <h1 class="admin-title">Admin Dashboard</h1>
       <button class="btn btn-primary upload-btn" @click="openUpload">
@@ -9,12 +8,10 @@
       </button>
     </div>
 
-    <!-- Upload Section -->
     <div v-if="isUploading" class="upload-section">
       <div class="upload-card">
         <h2 class="upload-title">Új Kép Feltöltése</h2>
-        
-        <!-- Category Selector -->
+
         <div class="form-group">
           <label for="category" class="form-label">Válassz kategóriát:</label>
           <select v-model="selectedCategory" class="form-select" id="category">
@@ -23,19 +20,12 @@
           </select>
         </div>
 
-        <!-- File Selection -->
         <div class="form-group">
           <label for="file" class="form-label">Fájl kiválasztása:</label>
-          <input 
-            type="file" 
-            class="form-control file-input" 
-            ref="fileInput" 
-            @change="handleFileChange"
-            accept="image/*"
-          >
+          <input type="file" class="form-control file-input" ref="fileInput" @change="handleFileChange"
+            accept="image/*">
         </div>
-        
-        <!-- Action Buttons -->
+
         <div class="upload-actions">
           <button class="btn btn-primary" @click="uploadImage">
             <i class="action-icon">⬆️</i>
@@ -49,7 +39,6 @@
       </div>
     </div>
 
-    <!-- Success Message -->
     <div v-if="uploadSuccess" class="upload-success-message">
       <div class="success-content">
         <i class="success-icon">✅</i>
@@ -57,12 +46,10 @@
       </div>
     </div>
 
-    <!-- Images Display -->
     <div class="images-container">
-      <!-- Kemence Images -->
       <div class="category-section">
         <h3 class="category-title">
-         
+
           Kemence Képek
         </h3>
         <div v-if="kemenceImages.length" class="images-grid">
@@ -83,10 +70,9 @@
         </div>
       </div>
 
-      <!-- Kandallo Images -->
       <div class="category-section">
         <h3 class="category-title">
-         
+
           Kandalló Képek
         </h3>
         <div v-if="kandalloImages.length" class="images-grid">
@@ -115,18 +101,16 @@ import { ref, onMounted } from 'vue';
 import dataservice from '../services/dataservice';
 import { useUserStore } from '../../store/store';
 
-const gallery = ref([]);  // Képek
-const fileInput = ref(null);  // Fájl input referencia
-const selectedCategory = ref('kemence');  // Alapértelmezett kategória
-const isUploading = ref(false);  // Állapot a fájl feltöltése során
-const fileName = ref(null);  // Fájl név
-const kemenceImages = ref([]);  // Kemence képek
-const kandalloImages = ref([]);  // Kandalló képek
-const uploadSuccess = ref(false);  // Sikeres feltöltés állapot
+const fileInput = ref(null);  
+const selectedCategory = ref('kemence');  
+const isUploading = ref(false);  
+const fileName = ref(null);  
+const kemenceImages = ref([]);  
+const kandalloImages = ref([]); 
+const uploadSuccess = ref(false);  
 const userStorage = useUserStore();
 const token = userStorage.user.token;
 
-// Képek betöltése
 onMounted(() => {
   dataservice.getAllImages().then(data => {
     kemenceImages.value = data.kemence;
@@ -134,7 +118,6 @@ onMounted(() => {
   });
 });
 
-// Kép törlése
 const deleteImage = (index, category) => {
   let imageName = category === 'kemence' ? kemenceImages.value[index] : kandalloImages.value[index];
   let imageFileName = imageName.match(/([^\/\\?]+)\.([a-zA-Z0-9]+)(?=$|\?)/)[0];
@@ -146,29 +129,25 @@ const deleteImage = (index, category) => {
   });
 };
 
-// Feltöltés folyamat indítása
 const openUpload = () => {
   isUploading.value = true;
 };
 
-// Feltöltés bezárása
+
 const closeUpload = () => {
   isUploading.value = false;
 };
 
-// Kép fájl kiválasztásának kezelése
 const handleFileChange = (e) => {
   const file = e.target.files[0];
   if (file) {
-    fileName.value = file.name;  // Ha van fájl, hozzárendeljük a fájl nevét
+    fileName.value = file.name
   }
 };
 
-// Kép feltöltése
 const uploadImage = () => {
   const file = fileInput.value.files[0];
 
-  // Ellenőrizzük, hogy a fájl ki lett-e választva
   if (!file) {
     alert('Válassz egy képet!');
     return;
@@ -176,24 +155,21 @@ const uploadImage = () => {
 
   const category = selectedCategory.value;
 
-  // Ellenőrizzük a kategóriát
   if (!category) {
     alert('Válassz kategóriát!');
     return;
   }
 
-  // A fájl és kategória elküldése a dataservice segítségével
   dataservice.upload(file, category, token).then(() => {
-    // Sikeres feltöltés után a képek újratöltése
     dataservice.getAllImages().then(data => {
       kemenceImages.value = data.kemence;
       kandalloImages.value = data.kandallo;
     });
-    uploadSuccess.value = true; // Sikeres feltöltés állapota
+    uploadSuccess.value = true;   
     setTimeout(() => {
-      uploadSuccess.value = false; // 3 másodperc után eltűnik
+      uploadSuccess.value = false; 
     }, 3000);
-    closeUpload();  // Feltöltés után a modal bezárása
+    closeUpload();  
   }).catch(err => {
     console.error('Hiba a kép feltöltésekor:', err);
   });
@@ -201,11 +177,8 @@ const uploadImage = () => {
 </script>
 
 <style scoped>
-
-
-
 .admin-container {
-background-color: #343331;
+  background-color: #343331;
   padding: 20px;
   max-width: 1400px;
   margin: 0 auto;
@@ -221,7 +194,7 @@ background-color: #343331;
 }
 
 .admin-title {
-   color:  rgb(236, 208, 137);
+  color: rgb(236, 208, 137);
   margin: 20px;
   padding: 10px;
 }
@@ -248,7 +221,6 @@ background-color: #343331;
   font-size: 1.2rem;
 }
 
-/* Upload Section */
 .upload-section {
   margin-bottom: 2rem;
 }
@@ -279,7 +251,8 @@ background-color: #343331;
   color: #495057;
 }
 
-.form-select, .file-input {
+.form-select,
+.file-input {
   width: 100%;
   padding: 0.75rem;
   border: 2px solid #e9ecef;
@@ -288,7 +261,8 @@ background-color: #343331;
   transition: all 0.3s ease;
 }
 
-.form-select:focus, .file-input:focus {
+.form-select:focus,
+.file-input:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
@@ -304,7 +278,6 @@ background-color: #343331;
   margin-right: 0.5rem;
 }
 
-/* Success Message */
 .upload-success-message {
   position: fixed;
   bottom: 20px;
@@ -334,13 +307,13 @@ background-color: #343331;
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
   }
 }
 
-/* Images Container */
 .images-container {
   display: flex;
   flex-direction: column;
@@ -445,7 +418,6 @@ background-color: #343331;
   font-style: italic;
 }
 
-/* Responsive Breakpoints */
 @media (max-width: 1200px) {
   .images-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -457,21 +429,21 @@ background-color: #343331;
   .admin-container {
     padding: 15px;
   }
-  
+
   .admin-header {
     flex-direction: column;
     align-items: stretch;
     text-align: center;
   }
-  
+
   .admin-title {
     font-size: 2rem;
   }
-  
+
   .upload-btn {
     align-self: center;
   }
-  
+
   .images-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
@@ -482,32 +454,34 @@ background-color: #343331;
   .admin-container {
     padding: 10px;
   }
-  
+
   .admin-title {
     font-size: 1.75rem;
   }
-  
-  .upload-card, .category-section {
+
+  .upload-card,
+  .category-section {
     padding: 1.5rem;
   }
-  
-  .upload-title, .category-title {
+
+  .upload-title,
+  .category-title {
     font-size: 1.5rem;
   }
-  
+
   .images-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 0.875rem;
   }
-  
+
   .admin-image {
     height: 160px;
   }
-  
+
   .upload-actions {
     flex-direction: column;
   }
-  
+
   .upload-actions .btn {
     width: 100%;
   }
@@ -517,33 +491,36 @@ background-color: #343331;
   .admin-container {
     padding: 8px;
   }
-  
+
   .admin-title {
     font-size: 1.5rem;
   }
-  
-  .upload-card, .category-section {
+
+  .upload-card,
+  .category-section {
     padding: 1.25rem;
   }
-  
-  .upload-title, .category-title {
+
+  .upload-title,
+  .category-title {
     font-size: 1.375rem;
   }
-  
+
   .images-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 0.75rem;
   }
-  
+
   .admin-image {
     height: 140px;
   }
-  
-  .form-select, .file-input {
+
+  .form-select,
+  .file-input {
     padding: 0.625rem;
     font-size: 0.9rem;
   }
-  
+
   .upload-btn {
     padding: 0.625rem 1.25rem;
     font-size: 0.9rem;
@@ -555,16 +532,16 @@ background-color: #343331;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 0.625rem;
   }
-  
+
   .admin-image {
     height: 120px;
   }
-  
+
   .delete-btn {
     padding: 0.375rem 0.75rem;
     font-size: 0.8rem;
   }
-  
+
   .upload-success-message {
     bottom: 10px;
     right: 10px;
@@ -573,48 +550,50 @@ background-color: #343331;
   }
 }
 
-/* Landscape orientation for mobile */
 @media (max-height: 500px) and (orientation: landscape) {
   .admin-container {
     padding: 10px;
   }
-  
+
   .admin-header {
     margin-bottom: 1rem;
   }
-  
-  .upload-card, .category-section {
+
+  .upload-card,
+  .category-section {
     padding: 1rem;
   }
-  
+
   .images-grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 0.5rem;
   }
-  
+
   .admin-image {
     height: 100px;
   }
 }
 
-/* High DPI displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
   .admin-image {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
   }
 }
 
-/* Print styles */
 @media print {
-  .upload-btn, .delete-btn, .upload-section {
+
+  .upload-btn,
+  .delete-btn,
+  .upload-section {
     display: none;
   }
-  
+
   .admin-container {
     padding: 0;
   }
-  
+
   .category-section {
     box-shadow: none;
     border: 1px solid #000;

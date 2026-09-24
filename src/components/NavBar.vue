@@ -2,7 +2,7 @@
 
     <div class="navbar-background d-flex container-fluid justify-content-around align-items-center sticky-top"
         v-if="width >= 1500">
-        <div class="branding">
+        <div  class="branding">
             <router-link to="/" class="logo">
                 <img class="logoimg" src="/src/assets/img/logogold_wobg.png" alt="" />
             </router-link>

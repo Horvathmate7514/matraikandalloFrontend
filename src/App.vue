@@ -2,7 +2,6 @@
 import { RouterView } from "vue-router";
 import NavBar from "./components/NavBar.vue";
 import AppFooter from "./components/AppFooter.vue";
-var pathname = window.location.pathname.split("/")
 
 </script>
 
@@ -17,7 +16,6 @@ var pathname = window.location.pathname.split("/")
 </template>
 
 <style>
-/* Global responsive styles */
 * {
   box-sizing: border-box;
 }

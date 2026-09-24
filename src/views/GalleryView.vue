@@ -1,10 +1,10 @@
 <template>
   <div class="gallery-container">
-    <h1 class="pointerSelect d-flex justify-content-center" @click="selectType(1)">Kandallo</h1>
+    <h1 class="pointerSelect d-flex justify-content-center" @click="selectType(1)">Kandalló</h1>
     <div class="d-flex justify-content-center flex-wrap gap-3">
       <div v-if="kandello.length" v-for="(item, key) in kandello" :key="key"
         class="p-3 col-sm-3 col-md-2 border border-dark rounded-3 darker-bg d-flex align-items-center"
-        @click="openLightbox(key,0)">
+        @click="openLightbox(key, 0)">
         <img :src="item" draggable="false" class="imgs selectDisable">
       </div>
     </div>
@@ -12,7 +12,7 @@
     <div class="d-flex justify-content-center flex-wrap gap-3">
       <div v-if="Kemence.length" v-for="(item, key) in Kemence" :key="key"
         class="p-3 col-sm-3 col-md-2 border border-dark rounded-3 darker-bg d-flex align-items-center"
-        @click="openLightbox(key,1)">
+        @click="openLightbox(key, 1)">
         <img :src="item" draggable="false" class="imgs selectDisable">
       </div>
     </div>
@@ -30,7 +30,7 @@
         <div class="lightbox-content">
           <span class="close" @click="closeLightbox">&times;</span>
           <button class="prev" @click="prevImage(1)">&#10094;</button>
-          <img  :src="Kemence[selectedImageIndex]" class="lightbox-image">
+          <img :src="Kemence[selectedImageIndex]" class="lightbox-image">
           <button class="next" @click="nextImage(1)">&#10095;</button>
         </div>
       </div>
@@ -79,7 +79,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeyDown);
 });
 
-const openLightbox = (index,type) => {
+const openLightbox = (index, type) => {
   showImg.value = type
   selectedImageIndex.value = index;
   lightboxOpen.value = true;
@@ -90,15 +90,15 @@ const closeLightbox = () => {
 };
 
 const prevImage = (type) => {
-  if (type==0){selectedImageIndex.value = (selectedImageIndex.value - 1 + kandello.value.length) % kandello.value.length; return}
+  if (type == 0) { selectedImageIndex.value = (selectedImageIndex.value - 1 + kandello.value.length) % kandello.value.length; return }
   else selectedImageIndex.value = (selectedImageIndex.value - 1 + Kemence.value.length) % Kemence.value.length;
 };
 
 const nextImage = (type) => {
-  if (type==0){selectedImageIndex.value = (selectedImageIndex.value + 1) % kandello.value.length; return}
+  if (type == 0) { selectedImageIndex.value = (selectedImageIndex.value + 1) % kandello.value.length; return }
   else selectedImageIndex.value = (selectedImageIndex.value + 1) % Kemence.value.length;
 
- 
+
 };
 
 const selectType = (type) => {
@@ -114,8 +114,8 @@ const selectType = (type) => {
   cursor: pointer;
 }
 
-h1{
-  color:  rgb(236, 208, 137);
+h1 {
+  color: rgb(236, 208, 137);
   margin: 20px;
   padding: 10px;
 }

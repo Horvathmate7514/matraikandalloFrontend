@@ -1,8 +1,13 @@
-body{
-    background-color: #343331;
-    color: white;
+body {
+  background-color: #343331;
+  color: white;
 }
 
 .darker-bg {
-    background-color: #2a2826;
-  }
+  background-color: #2a2826;
+}
+
+.row {
+  --bs-gutter-x: 0rem !important
+;
+}
